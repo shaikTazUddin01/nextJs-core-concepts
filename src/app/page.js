@@ -4,11 +4,15 @@ export const metadata = {
 };
 
 const Home = async () => {
-  const res = await fetch("http://localhost:5000/shoes");
+  const res = await fetch("http://localhost:5000/shoes",{
+    next:{
+      revalidate:5
+    }
+  });
   const shoes =await res.json();
-  console.log(shoes);
+  // console.log(shoes);
   return (
-    <div>
+    <div className="text-center">
       <h1 className="text-4xl text-center font-semibold">This is Home</h1>
       <div className="flex justify-between">
       {shoes?.slice(0,4)?.map((shoe,idx) => {
@@ -21,16 +25,21 @@ const Home = async () => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
+              <h2 className="card-title">{shoe?.title}</h2>
+              <p>{shoe?.price}</p>
+              <p>{shoe?.description}</p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
+                <button className="btn btn-outline btn-primary">Buy Now</button>
+                <button className="btn btn-outline btn-primary">Details</button>
               </div>
             </div>
           </div>
         );
       })}
       </div>
+      <a href="/allshoes">
+      <button className="btn btn-outline my-10">Show more</button>
+      </a>
     </div>
   );
 };
