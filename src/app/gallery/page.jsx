@@ -1,9 +1,17 @@
 import Image from "next/image";
 import nextImg from "../../assets/hero.webp";
+
+
+export const metadata={
+    title: "Gallery Page",
+    description: "This is Gallery page",
+  }
+  
+
 const Gallery = () => {
   return (
     <div>
-      <h1 className="text-4xl text-center">Regular Image</h1>
+      <h1 className="text-4xl text-center ">Regular Image</h1>
 
       <img
         src="https://media.licdn.com/dms/image/D4D12AQFJWfUQaQ1qPg/article-cover_image-shrink_600_2000/0/1675674296261?e=2147483647&v=beta&t=zcfSqc5__VRvgFu6e6Ll8vL4xNP_PYnbQYG4YpL9ysE"
